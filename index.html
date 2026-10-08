@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#07090b" />
+<title>AI Visibility Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#07090b;--panel:#0e1317;--panel-2:#12181d;--line:#1e272e;--line-2:#2a353d;
+  --text:#f4f7f8;--muted:#8a969d;--faint:#5c6970;
+  --cyan:#2ad4f5;--lime:#c8f04a;--violet:#a98bff;--pink:#ff6fb5;--amber:#ffc24a;--green:#3dff9b;--red:#ff5a72;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;background:
+  radial-gradient(900px 500px at 10% -10%,rgba(42,212,245,.10),transparent 60%),
+  radial-gradient(800px 500px at 100% 0%,rgba(169,139,255,.09),transparent 60%),
+  radial-gradient(700px 500px at 50% 110%,rgba(200,240,74,.05),transparent 60%),var(--bg)}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 22px 60px}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between;margin-bottom:18px}
+.title{display:flex;align-items:center;gap:14px}
+.logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 200deg,var(--cyan),var(--violet),var(--pink),var(--lime),var(--cyan));position:relative}
+.logo::after{content:"";position:absolute;inset:9px;border-radius:7px;background:var(--bg)}
+h1{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--muted);font-size:13px;margin-top:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font:600 12px "IBM Plex Mono",monospace;padding:6px 10px;border-radius:999px;border:1px solid var(--line-2);background:var(--panel);color:var(--muted)}
+.chip.brand{color:var(--cyan);border-color:rgba(42,212,245,.4);background:rgba(42,212,245,.08)}
+.chip.demo{color:#1a1200;background:var(--amber);border-color:var(--amber)}
+.chip.live{color:#03140a;background:var(--green);border-color:var(--green)}
+.banner{border:1px solid rgba(255,194,74,.45);background:linear-gradient(90deg,rgba(255,194,74,.14),rgba(255,194,74,.04));color:#ffe3a3;border-radius:var(--radius);padding:12px 16px;font-size:14px;margin-bottom:18px;line-height:1.5}
+.banner b{color:var(--amber)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.tile{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden}
+.tile::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent,var(--cyan));opacity:.9}
+.tile h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tile h2 span.hint{letter-spacing:0;text-transform:none;font-weight:500;color:var(--faint);font-size:12px}
+.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}
+@media (max-width:1000px){.span3{grid-column:span 6}.span4,.span5,.span7,.span8{grid-column:span 12}}
+@media (max-width:560px){.span3{grid-column:span 12}}
+.kpi{display:flex;align-items:center;gap:16px}
+.big{font-size:44px;font-weight:900;letter-spacing:-.03em;line-height:1}
+.big small{font-size:18px;font-weight:700;color:var(--muted);margin-left:2px}
+.kdesc{color:var(--muted);font-size:12.5px;margin-top:8px;line-height:1.45}
+.ring{flex:none}
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:grid;grid-template-columns:120px 1fr 62px;gap:10px;align-items:center;font-size:13px}
+.bar-row .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#cfd8dc}
+.bar-row.me .name{color:var(--cyan);font-weight:700}
+.track{height:12px;background:#161c21;border-radius:999px;overflow:hidden}
+.fill{height:100%;border-radius:999px}
+.val{text-align:right;font:600 12px "IBM Plex Mono",monospace;color:var(--muted)}
+.prov{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.pcard{background:#0a0e11;border:1px solid var(--line);border-radius:12px;padding:14px;border-left:3px solid var(--pc)}
+.pcard .pn{font-weight:800;font-size:15px}
+.pcard .pm{font:500 11.5px "IBM Plex Mono",monospace;color:var(--faint);margin-top:2px}
+.pcard .pv{font-size:32px;font-weight:900;margin:10px 0 6px;color:var(--pc)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:11.5px;color:var(--muted)}
+.stats b{display:block;color:var(--text);font:700 14px "IBM Plex Mono",monospace}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+svg text{font-family:"IBM Plex Mono",monospace}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-weight:700}
+td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.prow{cursor:pointer}tr.prow:hover td{background:rgba(42,212,245,.035)}
+.q{color:#dfe7ea;font-weight:600;line-height:1.4}
+.pill{display:inline-block;font:700 11px "IBM Plex Mono",monospace;padding:4px 8px;border-radius:7px;white-space:nowrap}
+.yes{background:rgba(61,255,155,.12);color:var(--green);border:1px solid rgba(61,255,155,.35)}
+.no{background:#12171b;color:var(--faint);border:1px solid var(--line-2)}
+.err{background:rgba(255,90,114,.1);color:var(--red);border:1px solid rgba(255,90,114,.35)}
+.links a{display:inline-block;font:500 11.5px "IBM Plex Mono",monospace;margin:0 6px 4px 0;padding:3px 7px;border-radius:6px;background:rgba(200,240,74,.08);color:var(--lime);border:1px solid rgba(200,240,74,.25);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:top}
+.comp{color:var(--muted);font-size:12px}
+tr.detail td{background:#0a0e11;padding:14px}
+.ans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.ans div{border:1px solid var(--line);border-radius:10px;padding:12px;font-size:12.5px;color:#c4ced3;line-height:1.55;white-space:pre-wrap;max-height:260px;overflow:auto}
+.ans div b{display:block;color:var(--text);margin-bottom:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.muted{color:var(--muted)}
+.note{color:var(--muted);font-size:12.5px;line-height:1.6}
+footer{margin-top:22px;color:var(--faint);font-size:12px;line-height:1.6}
+.scroll{overflow-x:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="title">
+      <div class="logo"></div>
+      <div>
+        <h1>AI Visibility Tracker</h1>
+        <div class="sub">How often AI answer engines mention and cite you</div>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+  </header>
+  <div id="banner"></div>
+  <div class="grid" id="grid"><div class="tile span12"><div class="muted">Loading data...</div></div></div>
+  <footer>
+    Method: a fixed list of prompts is sent every day to each AI provider through its official API (with web search where available).
+    Each answer is checked for your brand, aliases and domains, your position among all tracked brands, cited links, and competitor mentions.
+    Visibility = share of answers that mention you. Share of voice = your mentions / all brand mentions.
+    <a href="https://github.com/plutunieer/ai-visibility">Source on GitHub</a>
+  </footer>
+</div>
+<script>
+const COLORS={openai:"#2ad4f5",perplexity:"#a98bff",gemini:"#c8f04a"};
+const PAL=["#ff6fb5","#ffc24a","#a98bff","#3dff9b","#c8f04a","#2ad4f5"];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=v=>v==null?"-":(Math.round(v*10)/10).toString();
+const host=u=>{try{return new URL(u).host+new URL(u).pathname.replace(/\/$/,"")}catch(e){return u}};
+
+function ring(pct,color,size=96){
+  const r=size/2-9,c=2*Math.PI*r,off=c*(1-Math.min(100,pct||0)/100);
+  return `<svg class="ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+   <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="#161c21" stroke-width="10"/>
+   <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="10" stroke-linecap="round"
+     stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 ${size/2} ${size/2})"/></svg>`;
+}
+
+function trendChart(days){
+  if(!days.length) return `<div class="muted">No history yet.</div>`;
+  const W=760,H=240,P={l:38,r:14,t:14,b:28};
+  const series=[
+    {k:"visibility",n:"Visibility %",c:"#2ad4f5"},
+    {k:"citation_rate",n:"Cited %",c:"#c8f04a"},
+    {k:"share_of_voice",n:"Share of voice %",c:"#ff6fb5"}];
+  const max=Math.max(20,...days.flatMap(d=>series.map(s=>d[s.k]||0)));
+  const top=Math.ceil(max/10)*10;
+  const x=i=>P.l+(days.length===1?(W-P.l-P.r)/2:i*(W-P.l-P.r)/(days.length-1));
+  const y=v=>P.t+(H-P.t-P.b)*(1-(v||0)/top);
+  let g="";
+  for(let i=0;i<=4;i++){const v=top*i/4;g+=`<line x1="${P.l}" x2="${W-P.r}" y1="${y(v)}" y2="${y(v)}" stroke="#1e272e"/><text x="${P.l-6}" y="${y(v)+4}" fill="#5c6970" font-size="10" text-anchor="end">${Math.round(v)}</text>`}
+  const step=Math.max(1,Math.ceil(days.length/7));
+  days.forEach((d,i)=>{if(i%step===0||i===days.length-1)g+=`<text x="${x(i)}" y="${H-8}" fill="#5c6970" font-size="10" text-anchor="middle">${d.date.slice(5)}</text>`});
+  let lines="";
+  series.forEach(s=>{
+    const pts=days.map((d,i)=>`${x(i)},${y(d[s.k])}`).join(" ");
+    if(s.k==="visibility"){
+      lines+=`<polygon points="${x(0)},${y(0)} ${pts} ${x(days.length-1)},${y(0)}" fill="url(#gv)" opacity=".5"/>`;
+    }
+    lines+=`<polyline points="${pts}" fill="none" stroke="${s.c}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>`;
+    const L=days.length-1;lines+=`<circle cx="${x(L)}" cy="${y(days[L][s.k])}" r="4" fill="${s.c}"/>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="none" style="height:240px">
+   <defs><linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2ad4f5" stop-opacity=".45"/><stop offset="1" stop-color="#2ad4f5" stop-opacity="0"/></linearGradient></defs>
+   ${g}${lines}</svg>
+   <div class="legend">${series.map(s=>`<span><i style="background:${s.c}"></i>${s.n}</span>`).join("")}</div>`;
+}
+
+function render(L,H){
+  const demo=!!(L.demo||H.demo);
+  const S=L.summary, me=S.share_of_voice.find(x=>x.is_brand)||{share:0};
+  const days=H.days||[];
+  const prev=days.length>1?days[days.length-2]:null;
+  const delta=prev?(S.visibility-prev.visibility):null;
+  document.getElementById("chips").innerHTML=
+    `<span class="chip brand">${esc(L.brand.name)}</span>`+
+    `<span class="chip">${esc(L.date)}</span>`+
+    `<span class="chip">${S.answers} answers</span>`+
+    (demo?`<span class="chip demo">DEMO DATA</span>`:`<span class="chip live">LIVE</span>`);
+  if(demo) document.getElementById("banner").innerHTML=
+    `<div class="banner"><b>DEMO DATA.</b> Every number on this page is made-up sample data so the layout is not empty. It is not a real AI result.
+     Add an API key as a repo secret and run the "Track AI visibility" workflow. The first real run replaces all demo data.</div>`;
+  const provs=L.by_provider||[];
+  const maxSov=Math.max(1,...S.share_of_voice.map(x=>x.share));
+  let html="";
+  html+=`<div class="tile span3" style="--accent:var(--cyan)"><h2>Visibility score</h2>
+    <div class="kpi">${ring(S.visibility,"#2ad4f5")}<div><div class="big">${fmt(S.visibility)}<small>%</small></div>
+    <div class="kdesc">${S.mentioned} of ${S.answers} answers mention you${delta!=null?`<br><span style="color:${delta>=0?"var(--green)":"var(--red)"}">${delta>=0?"+":""}${fmt(delta)} pts vs ${esc(prev.date)}</span>`:""}</div></div></div></div>`;
+  html+=`<div class="tile span3" style="--accent:var(--lime)"><h2>Cited / linked</h2>
+    <div class="kpi">${ring(S.citation_rate,"#c8f04a")}<div><div class="big">${fmt(S.citation_rate)}<small>%</small></div>
+    <div class="kdesc">${S.cited} answers link or cite one of your domains</div></div></div></div>`;
+  html+=`<div class="tile span3" style="--accent:var(--pink)"><h2>Share of voice</h2>
+    <div class="kpi">${ring(me.share,"#ff6fb5")}<div><div class="big">${fmt(me.share)}<small>%</small></div>
+    <div class="kdesc">your mentions vs all tracked brands</div></div></div></div>`;
+  html+=`<div class="tile span3" style="--accent:var(--violet)"><h2>Average rank</h2>
+    <div class="kpi"><div><div class="big" style="color:var(--violet)">${S.avg_rank==null?"-":"#"+fmt(S.avg_rank)}</div>
+    <div class="kdesc">position among brands when you are named<br>${S.top1} answers name you first${S.errors?`<br><span style="color:var(--red)">${S.errors} failed calls</span>`:""}</div></div></div></div>`;
+
+  html+=`<div class="tile span8" style="--accent:linear-gradient(90deg,#2ad4f5,#c8f04a,#ff6fb5)"><h2>Trend <span class="hint">${days.length} day${days.length===1?"":"s"}</span></h2>${trendChart(days)}</div>`;
+  html+=`<div class="tile span4" style="--accent:var(--pink)"><h2>Share of voice <span class="hint">answers naming each brand</span></h2><div class="bars">`+
+    S.share_of_voice.map((x,i)=>{const c=x.is_brand?"#2ad4f5":PAL[i%PAL.length];
+      return `<div class="bar-row ${x.is_brand?"me":""}"><div class="name">${esc(x.name)}</div><div class="track"><div class="fill" style="width:${100*x.share/maxSov}%;background:${c}"></div></div><div class="val">${fmt(x.share)}% <span style="color:var(--faint)">${x.mentions}</span></div></div>`}).join("")+
+    `</div></div>`;
+
+  html+=`<div class="tile span12" style="--accent:var(--violet)"><h2>By provider</h2><div class="prov">`+
+    provs.map(p=>{const c=COLORS[p.provider]||"#ffc24a";
+      return `<div class="pcard" style="--pc:${c}"><div class="pn">${esc(p.label)}</div><div class="pm">${esc(p.model)}</div>
+       <div class="pv">${fmt(p.visibility)}%</div>
+       <div class="track" style="margin-bottom:10px"><div class="fill" style="width:${p.visibility}%;background:${c}"></div></div>
+       <div class="stats"><div>cited<b>${fmt(p.citation_rate)}%</b></div><div>avg rank<b>${p.avg_rank==null?"-":"#"+fmt(p.avg_rank)}</b></div><div>share<b>${fmt(p.share_of_voice)}%</b></div></div>
+       ${p.errors?`<div class="kdesc" style="color:var(--red)">${p.errors} errors</div>`:""}</div>`}).join("")+
+    ((L.providers_skipped||[]).length?(L.providers_skipped).map(s=>`<div class="pcard" style="--pc:#2a353d;opacity:.6"><div class="pn">${esc(s.provider)}</div><div class="pm">skipped: ${esc(s.reason)}</div></div>`).join(""):"")+
+    `</div></div>`;
+
+  // per prompt table
+  const prompts=[...new Set(L.results.map(r=>r.prompt))];
+  const pn=[...new Set(L.results.map(r=>r.provider))];
+  html+=`<div class="tile span12" style="--accent:var(--lime)"><h2>Prompts <span class="hint">click a row to read the answers</span></h2><div class="scroll"><table>
+   <thead><tr><th>Prompt</th>${pn.map(p=>`<th>${esc((provs.find(x=>x.provider===p)||{}).label||p)}</th>`).join("")}<th>Your cited links</th><th>Competitors named</th></tr></thead><tbody>`;
+  prompts.forEach((q,qi)=>{
+    const rs=pn.map(p=>L.results.find(r=>r.prompt===q&&r.provider===p));
+    const links=[...new Set(rs.flatMap(r=>r?r.cited_urls:[]))];
+    const comps=[...new Set(rs.flatMap(r=>r?r.competitors:[]))];
+    html+=`<tr class="prow" data-i="${qi}"><td class="q">${esc(q)}</td>`+
+      rs.map(r=>!r?`<td><span class="pill no">-</span></td>`:r.error?`<td><span class="pill err" title="${esc(r.error)}">ERROR</span></td>`:
+        `<td><span class="pill ${r.mentioned?"yes":"no"}">${r.mentioned?"YES #"+r.rank:"NO"}</span>${r.cited?` <span class="pill yes" style="color:var(--lime);border-color:rgba(200,240,74,.35);background:rgba(200,240,74,.1)">LINK</span>`:""}</td>`).join("")+
+      `<td class="links">${links.length?links.map(u=>u.startsWith("http")?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a>`:`<a>${esc(u)}</a>`).join(""):`<span class="muted">-</span>`}</td>`+
+      `<td class="comp">${comps.length?esc(comps.join(", ")):"-"}</td></tr>`;
+    html+=`<tr class="detail" id="d${qi}" hidden><td colspan="${pn.length+3}"><div class="ans">`+
+      rs.filter(Boolean).map(r=>`<div><b style="color:${COLORS[r.provider]||"#fff"}">${esc(r.provider)} · ${esc(r.model)}</b>${esc(r.error?("Error: "+r.error):(r.answer||"(empty answer)"))}</div>`).join("")+
+      `</div></td></tr>`;
+  });
+  html+=`</tbody></table></div></div>`;
+  document.getElementById("grid").innerHTML=html;
+  document.querySelectorAll("tr.prow").forEach(tr=>tr.addEventListener("click",()=>{const d=document.getElementById("d"+tr.dataset.i);d.hidden=!d.hidden}));
+}
+
+Promise.all([
+  fetch("data/latest.json?t="+Date.now()).then(r=>r.json()),
+  fetch("data/history.json?t="+Date.now()).then(r=>r.json()).catch(()=>({days:[]}))
+]).then(([L,H])=>render(L,H)).catch(e=>{
+  document.getElementById("grid").innerHTML=`<div class="tile span12"><h2>No data yet</h2><div class="note">Could not load data/latest.json (${esc(e.message)}). Run <span class="mono">python track.py --demo</span> for sample data or run the workflow with an API key.</div></div>`;
+});
+</script>
+</body>
+</html>

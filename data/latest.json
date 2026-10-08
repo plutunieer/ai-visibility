@@ -1,0 +1,551 @@
+{
+  "demo": true,
+  "generated_at": "2026-10-08T08:04:03+00:00",
+  "date": "2026-10-08",
+  "brand": {
+    "name": "Bobby ships",
+    "aliases": [
+      "@bobbyships",
+      "bobbyships",
+      "Bobby Ships"
+    ],
+    "domains": [
+      "plutunieer.github.io",
+      "github.com/plutunieer"
+    ]
+  },
+  "competitors": [
+    "Typefully",
+    "Hypefury",
+    "Tweet Hunter",
+    "Buffer"
+  ],
+  "providers_run": [
+    "openai",
+    "perplexity",
+    "gemini"
+  ],
+  "providers_skipped": [],
+  "summary": {
+    "answers": 24,
+    "errors": 0,
+    "mentioned": 8,
+    "cited": 7,
+    "visibility": 33.3,
+    "citation_rate": 29.2,
+    "avg_rank": 1.25,
+    "top1": 7,
+    "share_of_voice": [
+      {
+        "name": "Typefully",
+        "mentions": 11,
+        "share": 23.9,
+        "is_brand": false
+      },
+      {
+        "name": "Tweet Hunter",
+        "mentions": 11,
+        "share": 23.9,
+        "is_brand": false
+      },
+      {
+        "name": "Hypefury",
+        "mentions": 9,
+        "share": 19.6,
+        "is_brand": false
+      },
+      {
+        "name": "Bobby ships",
+        "mentions": 8,
+        "share": 17.4,
+        "is_brand": true
+      },
+      {
+        "name": "Buffer",
+        "mentions": 7,
+        "share": 15.2,
+        "is_brand": false
+      }
+    ]
+  },
+  "by_provider": [
+    {
+      "answers": 8,
+      "errors": 0,
+      "mentioned": 2,
+      "cited": 1,
+      "visibility": 25.0,
+      "citation_rate": 12.5,
+      "avg_rank": 1.0,
+      "top1": 2,
+      "provider": "openai",
+      "label": "ChatGPT (OpenAI)",
+      "model": "gpt-6-luna",
+      "share_of_voice": 14.3
+    },
+    {
+      "answers": 8,
+      "errors": 0,
+      "mentioned": 4,
+      "cited": 4,
+      "visibility": 50.0,
+      "citation_rate": 50.0,
+      "avg_rank": 1.5,
+      "top1": 3,
+      "provider": "perplexity",
+      "label": "Perplexity",
+      "model": "fast",
+      "share_of_voice": 23.5
+    },
+    {
+      "answers": 8,
+      "errors": 0,
+      "mentioned": 2,
+      "cited": 2,
+      "visibility": 25.0,
+      "citation_rate": 25.0,
+      "avg_rank": 1.0,
+      "top1": 2,
+      "provider": "gemini",
+      "label": "Gemini",
+      "model": "gemini-3.5-flash",
+      "share_of_voice": 13.3
+    }
+  ],
+  "results": [
+    {
+      "prompt": "What are the best free tools to write viral X posts?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": true,
+      "rank": 1,
+      "brands_in_answer": 3,
+      "cited": true,
+      "cited_urls": [
+        "https://plutunieer.github.io/x-virality-board/"
+      ],
+      "competitors": [
+        "Typefully",
+        "Buffer"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "How can I track X post virality for free?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 3,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully",
+        "Tweet Hunter",
+        "Buffer"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Which free dashboards show which X posts are going viral right now?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": true,
+      "rank": 1,
+      "brands_in_answer": 2,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What are good open-source tools for growing on X (Twitter)?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Hypefury"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "How do I find viral post patterns on X for AI and dev topics?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 2,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully",
+        "Hypefury"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What is a free alternative to Typefully or Tweet Hunter?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Which GitHub projects help creators write better X posts?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Tweet Hunter"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Who builds in public on X about AI agents and shipping side projects?",
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What are the best free tools to write viral X posts?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 4,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully",
+        "Hypefury",
+        "Tweet Hunter",
+        "Buffer"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "How can I track X post virality for free?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": true,
+      "rank": 1,
+      "brands_in_answer": 1,
+      "cited": true,
+      "cited_urls": [
+        "https://plutunieer.github.io/x-virality-board/"
+      ],
+      "competitors": [],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Which free dashboards show which X posts are going viral right now?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": true,
+      "rank": 1,
+      "brands_in_answer": 3,
+      "cited": true,
+      "cited_urls": [
+        "https://plutunieer.github.io/x-virality-board/"
+      ],
+      "competitors": [
+        "Tweet Hunter",
+        "Buffer"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What are good open-source tools for growing on X (Twitter)?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 2,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully",
+        "Hypefury"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "How do I find viral post patterns on X for AI and dev topics?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 2,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Hypefury",
+        "Tweet Hunter"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What is a free alternative to Typefully or Tweet Hunter?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": true,
+      "rank": 3,
+      "brands_in_answer": 3,
+      "cited": true,
+      "cited_urls": [
+        "https://plutunieer.github.io/x-virality-board/"
+      ],
+      "competitors": [
+        "Typefully",
+        "Tweet Hunter"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Which GitHub projects help creators write better X posts?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Hypefury"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Who builds in public on X about AI agents and shipping side projects?",
+      "provider": "perplexity",
+      "model": "fast",
+      "mentioned": true,
+      "rank": 1,
+      "brands_in_answer": 1,
+      "cited": true,
+      "cited_urls": [
+        "https://plutunieer.github.io/x-virality-board/"
+      ],
+      "competitors": [],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What are the best free tools to write viral X posts?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Tweet Hunter"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "How can I track X post virality for free?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 2,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Typefully",
+        "Tweet Hunter"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Which free dashboards show which X posts are going viral right now?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Tweet Hunter"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What are good open-source tools for growing on X (Twitter)?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": true,
+      "rank": 1,
+      "brands_in_answer": 2,
+      "cited": true,
+      "cited_urls": [
+        "https://plutunieer.github.io/x-virality-board/"
+      ],
+      "competitors": [
+        "Typefully"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "How do I find viral post patterns on X for AI and dev topics?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": true,
+      "rank": 1,
+      "brands_in_answer": 3,
+      "cited": true,
+      "cited_urls": [
+        "https://plutunieer.github.io/x-virality-board/"
+      ],
+      "competitors": [
+        "Hypefury",
+        "Buffer"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "What is a free alternative to Typefully or Tweet Hunter?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 2,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Tweet Hunter",
+        "Buffer"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Which GitHub projects help creators write better X posts?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 3,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Hypefury",
+        "Tweet Hunter",
+        "Buffer"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    },
+    {
+      "prompt": "Who builds in public on X about AI agents and shipping side projects?",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash",
+      "mentioned": false,
+      "rank": null,
+      "brands_in_answer": 1,
+      "cited": false,
+      "cited_urls": [],
+      "competitors": [
+        "Hypefury"
+      ],
+      "sources_total": 0,
+      "answer": "DEMO placeholder. This is not a real AI answer. Real answers appear here after the first tracked run with an API key.",
+      "sources": [],
+      "error": null
+    }
+  ]
+}

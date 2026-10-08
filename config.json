@@ -1,0 +1,33 @@
+{
+  "brand": {
+    "name": "Bobby ships",
+    "aliases": ["@bobbyships", "bobbyships", "Bobby Ships"],
+    "domains": ["plutunieer.github.io", "github.com/plutunieer"]
+  },
+  "competitors": [
+    { "name": "Typefully", "aliases": ["typefully.com"] },
+    { "name": "Hypefury", "aliases": ["hypefury.com"] },
+    { "name": "Tweet Hunter", "aliases": ["TweetHunter", "tweethunter.io"] },
+    { "name": "Buffer", "aliases": ["buffer.com"] }
+  ],
+  "prompts": [
+    "What are the best free tools to write viral X posts?",
+    "How can I track X post virality for free?",
+    "Which free dashboards show which X posts are going viral right now?",
+    "What are good open-source tools for growing on X (Twitter)?",
+    "How do I find viral post patterns on X for AI and dev topics?",
+    "What is a free alternative to Typefully or Tweet Hunter?",
+    "Which GitHub projects help creators write better X posts?",
+    "Who builds in public on X about AI agents and shipping side projects?"
+  ],
+  "providers": {
+    "openai": { "enabled": true, "model": "gpt-6-luna", "web_search": true },
+    "perplexity": { "enabled": true, "preset": "fast" },
+    "gemini": { "enabled": true, "model": "gemini-3.5-flash", "google_search": true }
+  },
+  "settings": {
+    "timeout_seconds": 90,
+    "max_answer_chars": 6000,
+    "history_days": 365
+  }
+}
